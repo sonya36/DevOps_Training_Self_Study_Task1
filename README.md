@@ -186,6 +186,7 @@ These three types of permissions can then be delegated to three different user t
 - Other – all other users that are neither the owner nor in the group
 
 **Let’s say we have the following file:**
+
 `$ ls -l test_file.txt -rwxrw-r-- 1 linuxconfig admins 4 May 2 18:00 test_file.txt`
 
 The output tells us that:
@@ -199,14 +200,19 @@ The output tells us that:
 In order to assign permissions to individual users, or a group of users, we first need to use the chown command to specify who the owner and group of the file should be. Once we have these settings applied, then we can edit the owner and group permissions with chmod.
 
 **Let’s start by setting the owner of file test_file.txt to user linuxconfig:**
+
 `$ sudo chown linuxconfig:linuxconfig test_file.txt`
+
 Note that we used the sudo command here, which is necessary for changing file ownership. We also used the linuxconfig:linuxconfig syntax to change both the user and group simultaneously. This is effectively the same as giving no group permissions, since the linuxconfig group only contains one user – linuxconfig.
 
 **Or if we want to configure both the owner linuxconfig and group admins we can execute:**
+
 `$ sudo chown linuxconfig:admins test_file.txt`
+
 The chgrp command can be used if you only want to change the group for a file, and not the owner. 
 
 **In this example we change the group to admins:**
+
 `$ sudo chgrp admins test_file.txt`
 
 ## How to use chmod
@@ -218,6 +224,7 @@ The chmod command can accept many syntaxes and options, and it would be out of t
 **The following command will change permissions for the owner, group, and other users:**
 
 `$ chmod 760 test_file.txt`
+
 - The 7 is equivalent to read, write, and execute permissions, and will grant these permissions to the owner
 - The 6 is equivalent to read and write permissions, and will grant them to the group
 - The 0 is equivalent to no permissions, and assigns them to all other users
