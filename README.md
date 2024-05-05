@@ -224,5 +224,81 @@ The chmod command can accept many syntaxes and options, and it would be out of t
 
 In this way, we can see how the chown and chmod commands complement each other to achieve the permissions that we need for each file. The chmod command controls permissions for all users, and the chown command allows us to assign permissions in a more granular way by configuring the owner and group accounts.
 
+# TCP 
+TCP, short for Transmission Control Protocol, is a connection-oriented protocol that ensures reliable and ordered delivery of data packets between devices. It provides error detection, flow control, and congestion control mechanisms to guarantee the successful transmission of data.
 
+TCP establishes a connection between a sender and a receiver before transferring data, ensuring that packets arrive in the correct order and without errors. It retransmits lost or corrupted packets and acknowledges the receipt of data, making it highly reliable.
+
+## Features of TCP
+Here are some features of TCP –
+
+- TCP establishes a reliable connection between the sender and receiver before data exchange.
+- TCP detects and corrects errors in transmitted data using checksums and retransmission.
+- TCP regulates the flow of data to prevent overwhelming the receiver or congesting the network.
+- TCP assigns sequence numbers to packets for proper ordering.
+- TCP uses acknowledgments to verify successful receipt of data.
+
+## Advantages of TCP
+- Reliable data delivery
+- Error detection and correction
+- Ordered data delivery
+- Flow control
+- Congestion control
+- Connection-oriented communication
+- Compatibility
+- Versatility
+- Error recovery
+- Widely adopted
+
+## Disadvantages of TCP
+- More Overhead
+- Limited scalability
+- TCP is a more complex protocol compared to UDP
+Inefficient for low-bandwidth networks
+
+## Where TCP is used?
+TCP (Transmission Control Protocol) is used in various applications and scenarios where reliable and ordered data transmission is essential. Here are some common use cases for TCP:
+
+- Web browsing: TCP is used to establish a connection between web browsers and servers.
+- File transfer: TCP is employed in protocols like FTP (File Transfer Protocol) and SFTP (Secure File Transfer Protocol).
+- Remote access: TCP is utilized in protocols like SSH (Secure Shell) and Telnet to establish secure and reliable remote connections.
+- VPN (Virtual Private Network): TCP is often used in VPN implementations to provide secure and reliable communication.
+- IoT (Internet of Things) applications: TCP is used in various IoT applications where reliable communication and data delivery are crucial.
+
+# UDP
+# What is UDP?
+User Datagram Protocol is a transport layer protocol used to transmit data. UDP, unlike TCP, has less overhead for establishing, maintaining, or terminating a connection; hence, it is faster than TCP. In UDP, the data is continuously sent to the recipient irrespective of whether it was received or not.
+
+UDP can be considered a lightweight protocol because of its lesser responsibilities while delivering data. It is unreliable because there is no acknowledgment after receiving the data successfully, which means the sender won’t know if the data was lost during communication or received by the recipient.
+
+## Features of UDP
+Some of the features of UDP are –
+
+- UDP is a connectionless protocol, meaning it does not establish a dedicated connection before transmitting data.
+- UDP has minimal header overhead compared to TCP, making it more lightweight.
+- UDP prioritizes speed over reliability, making it suitable for real-time applications that require quick data delivery.
+- UDP supports broadcast and multicast communication, allowing efficient data distribution to multiple recipients.
+
+## Advantages of UDP
+- Low overhead
+- High-speed transmission
+- UDP has a very simple design
+- Reduced network congestion
+- Suitable for loss-tolerant applications
+
+## Disadvantages of UDP
+Here are a few disadvantages of using UDP (User -Datagram Protocol):
+- UDP does not provide built-in mechanisms for reliable data delivery, error correction, or retransmission.
+- It does not ensure the ordered delivery of packets.
+- UDP does not perform congestion control.
+- Vulnerability to packet loss.
+- Inefficient for large data transfers.
+- Unsuitable for applications requiring guaranteed delivery.
+
+## Where UDP is used?
+- UDP is widely used in real-time applications, such as video streaming, live broadcasting, online gaming, and voice over IP (VoIP).
+- UDP is the primary protocol used for DNS resolution.
+- UDP is often used in IoT applications for transmitting data from connected devices to servers or gateways.
+- UDP is the underlying protocol for TFTP, a simple file transfer protocol used for bootstrapping network devices or transferring configuration files.
+- UDP is used in DHCP for dynamic IP address assignment.
 
