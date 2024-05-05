@@ -154,17 +154,11 @@ Web developers use HTML for frontend development, such as designing the layout o
 
 Web applications use a LAMP stack to respond to requests from web browsers. The Apache web server and MySQL database run on the Linux operating system and communicate using PHP. When you open a webpage in a browser, the LAMP stack goes through the following process. 
 
-- Receives requests 
+- Receives requests : The Apache web server receives the incoming request from the browser. If the request is to load a static file, the Apache server responds directly with the appropriate content. If the request is for dynamic content, the Apache server passes the request to the PHP component. The PHP component finds and loads the appropriate PHP file that can process the request. 
 
-The Apache web server receives the incoming request from the browser. If the request is to load a static file, the Apache server responds directly with the appropriate content. If the request is for dynamic content, the Apache server passes the request to the PHP component. The PHP component finds and loads the appropriate PHP file that can process the request. 
+- Processes requests : The PHP file contains PHP functions that are codes for generating dynamic content. The PHP component processes the PHP functions, such as converting measurement units or creating a sales chart. Some PHP functions might require information from the database. In such cases, the PHP code retrieves the stored information from the database and uses it to process the function.  
 
-- Processes requests  
-
-The PHP file contains PHP functions that are codes for generating dynamic content. The PHP component processes the PHP functions, such as converting measurement units or creating a sales chart. Some PHP functions might require information from the database. In such cases, the PHP code retrieves the stored information from the database and uses it to process the function.  
-
-- Returns responses 
-
-The PHP passes the calculated results to the web server in HTML format. At the same time, it also stores new data in the MySQL database. The Apache HTTP server sends the dynamic HTML results to the user's browser.  
+- Returns responses : The PHP passes the calculated results to the web server in HTML format. At the same time, it also stores new data in the MySQL database. The Apache HTTP server sends the dynamic HTML results to the user's browser.  
 
 ## What are LAMP alternatives? 
 
@@ -174,11 +168,61 @@ LAMP alternatives, or LAMP variants, are backend development technologies that u
 
 While PHP is the default scripting language of the LAMP stack, developers can replace it with Perl or Python.  
 
-- Perl  
+- Perl : Perl is a programming language that has been around for more than 30 years. Developers use Perl for web development because it works well with database integration and has frameworks that help with development. Frameworks are software tools that contain well-tested components that speed up application development. 
 
-Perl is a programming language that has been around for more than 30 years. Developers use Perl for web development because it works well with database integration and has frameworks that help with development. Frameworks are software tools that contain well-tested components that speed up application development. 
+- Python : Python is a high-level programming language for building different types of software, including web applications. Developers use Python in web development because it’s simple and easy to understand. 
 
-- Python 
+# chown vs. chmod Linux Commands
+The chmod and chown Linux commands are the main tools used for controlling file permissions in Linux. They both go hand in hand, and must be used in conjunction to effectively control which users have the ability to use certain files.
 
-Python is a high-level programming language for building different types of software, including web applications. Developers use Python in web development because it’s simple and easy to understand. 
+There are three main permissions in Linux:
+- Read – the ability to open a file and read its contents
+- Write – the ability to edit and save changes to files
+- Execute – the ability to execute a file, such as a Bash script
+
+These three types of permissions can then be delegated to three different user types:
+- Owner – the user or owner of the file
+- Group – a user group that has permissions on the file
+- Other – all other users that are neither the owner nor in the group
+
+**Let’s say we have the following file:**
+`$ ls -l test_file.txt -rwxrw-r-- 1 linuxconfig admins 4 May 2 18:00 test_file.txt`
+
+The output tells us that:
+
+- The owner of the file is linuxconfig, with read, write, and execute permissions
+- The group of the file is admins, with read and write permissions
+- All other users only have read permissions on the file
+
+## How to use chown
+
+In order to assign permissions to individual users, or a group of users, we first need to use the chown command to specify who the owner and group of the file should be. Once we have these settings applied, then we can edit the owner and group permissions with chmod.
+
+**Let’s start by setting the owner of file test_file.txt to user linuxconfig:**
+`$ sudo chown linuxconfig:linuxconfig test_file.txt`
+Note that we used the sudo command here, which is necessary for changing file ownership. We also used the linuxconfig:linuxconfig syntax to change both the user and group simultaneously. This is effectively the same as giving no group permissions, since the linuxconfig group only contains one user – linuxconfig.
+
+**Or if we want to configure both the owner linuxconfig and group admins we can execute:**
+`$ sudo chown linuxconfig:admins test_file.txt`
+The chgrp command can be used if you only want to change the group for a file, and not the owner. 
+
+**In this example we change the group to admins:**
+`$ sudo chgrp admins test_file.txt`
+
+## How to use chmod
+
+Now that we have the owner and group set correctly, we can use the chmod command to modify the file permissions we need for the owner, group, and other users.
+
+The chmod command can accept many syntaxes and options, and it would be out of the scope of this tutorial to cover them all. Instead, see our chmod command tutorial for a list of various examples. In this section, we will just cover the basics in order to help you understand how the chmod is different from chown.
+
+**The following command will change permissions for the owner, group, and other users:**
+
+`$ chmod 760 test_file.txt`
+- The 7 is equivalent to read, write, and execute permissions, and will grant these permissions to the owner
+- The 6 is equivalent to read and write permissions, and will grant them to the group
+- The 0 is equivalent to no permissions, and assigns them to all other users
+
+In this way, we can see how the chown and chmod commands complement each other to achieve the permissions that we need for each file. The chmod command controls permissions for all users, and the chown command allows us to assign permissions in a more granular way by configuring the owner and group accounts.
+
+
 
